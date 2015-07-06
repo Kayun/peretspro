@@ -22,15 +22,15 @@ var app = {
 		var menuItemAll = document.querySelectorAll('.js-menu-item'),
 			menuItemActiveClass = 'menu__item_state_active';
 
-		menuItemAll.forEach(function (elem) {
-			elem.addEventListener('click', function () {
-				menuItemAll.forEach(function (elem) {
-					elem.classList.remove(menuItemActiveClass);
+		for (var i = 0; i < menuItemAll.length; i++) {
+			menuItemAll[i].addEventListener('click', function () {
+				for (var j = 0; j < menuItemAll.length; j++) {
+					menuItemAll[j].classList.remove(menuItemActiveClass);
 
-				});
+				}
 				this.classList.add(menuItemActiveClass);
 			});
-		});
+		}
 
 	}
 };
