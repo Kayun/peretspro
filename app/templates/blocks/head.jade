@@ -1,0 +1,33 @@
++script([], ['common.min.js'])
+
+head
+	meta(charset='utf-8')
+	meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimal-ui')
+	meta(http-equiv='X-UA-Compatible' content='IE=edge')
+
+	//- http://realfavicongenerator.net/faq#why_ico_not_declared
+
+	block head
+	title= pageTitle
+	meta(name='description' content=pageDescription)
+	meta(name='keywords' content=pageKeywords)
+	meta(name='copyright' content=pageCopyright)
+
+	link(href='assets/styles/common.css' rel='stylesheet')
+
+	link(rel='subresource' href='//vjs.zencdn.net/4.12/video.js')
+	link(rel='subresource' href='assets/scripts/libs/parallax/deploy/parallax.min.js')
+	link(rel='subresource' href='assets/scripts/common.min.js')
+
+	script.
+		var scripts = [
+			'//vjs.zencdn.net/4.12/video.js',
+			'assets/scripts/libs/parallax/deploy/parallax.min.js',
+			'assets/scripts/common.min.js',
+		];
+		scripts.forEach(function (src) {
+			var script = document.createElement('script');
+			script.src = src;
+			script.async = false;
+			document.head.appendChild(script);
+		});

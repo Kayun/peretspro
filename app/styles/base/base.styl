@@ -1,0 +1,32 @@
+body
+html
+.main
+	size(100%)
+
+.main
+	position relative
+	overflow hidden
+	background-color #000
+
+.wrapper
+	position relative
+	size(100%)
+
+
+.logo
+	position absolute
+	top 4.66%
+	left 3.44%
+	sprite($logo)
+	no-select()
+
+.items
+	opacity 0
+	transition opacity .3s ease .3s, transform .6s ease-in-out-back
+	will-change opacity, transform
+
+	&_left
+		transform translate(-150%, 0)
+
+	&_bottom
+		transform translate(0, 200%)
