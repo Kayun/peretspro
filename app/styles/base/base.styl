@@ -28,6 +28,9 @@ html
 	&_left
 		transform translate(-150%, 0)
 
+	&_right
+		transform translate(150%, 0)
+
 	&_bottom
 		transform translate(0, 200%)
 
@@ -55,3 +58,53 @@ html
 		opacity .11
 		transition opacity  .5s ease
 		will-change opacity
+
+.copy
+	position absolute
+	bottom 8.88%
+	right 4.77%
+	text-align right
+	cursor pointer
+
+	&__icon
+	&__text
+		transition opacity .5s ease
+		will-change opacity
+
+	&__icon
+		display inline-block
+		sprite($icon-ppda)
+		opacity .44
+
+	&__text
+		sprite($icon-text)
+		opacity .22
+
+	&:hover
+
+		.copy__icon
+			opacity .88
+
+		.copy__text
+			opacity .55
+
+.date
+	position absolute
+	top 7.66%
+	right 4.33%
+	amazing-b()
+	text-align center
+	color #fff
+
+	&__duration
+		sprite($icon_day)
+
+	&__days
+		display inline-block
+		margin-top 13px
+		font-size 36px
+
+	&__month
+		display inline-block
+		font-size 16px
+		text-align center

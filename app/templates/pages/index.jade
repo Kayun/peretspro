@@ -53,3 +53,21 @@ block content
 		.organizer.items.items_bottom.js-items(data-text="Обращение организаторов")
 
 		include ../blocks/slider
+
+		.copy.items.items_right.js-items
+			.copy__icon
+			.copy__text
+
+		.music.items.items_right.js-items
+			- for (var i = 0; i < 16; i++)
+				.music__strip
+					span
+
+			.music__mute Выключить звук
+
+		.date.items.items_right.js-items
+			.date__duration
+			span.date__days 5-15
+			br
+			span.date__month октября
+

@@ -3,7 +3,7 @@ $button-height = 35px
 
 .slider
 	position absolute
-	top 86.77%
+	top 86%
 	right 14.05%
 	padding-top 60px
 	width $slider-width
@@ -38,6 +38,10 @@ $button-height = 35px
 			visibility visible
 			transition-delay .5s
 			transition-duration .2s, 0s
+
+			&:active
+				top 1px
+				height $button-height - 1px
 
 		& .slider__item
 			position static !important
@@ -133,7 +137,3 @@ $button-height = 35px
 			content ''
 			border 2px solid $button-color
 			border-radius 3%/50%
-
-		&:active
-			top 1px
-			height $button-height - 1px
