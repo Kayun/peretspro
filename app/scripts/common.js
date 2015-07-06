@@ -22,10 +22,9 @@ var app = {
 		var menuItemAll = document.querySelectorAll('.js-menu-item'),
 			menuItemActiveClass = 'menu__item_state_active';
 
-		menuItemAll.forEach(function (elem)) {
+		menuItemAll.forEach(function (elem) {
 			elem.addEventListener('click', function () {
-				//for (var j = 0; j < menuItemAll.length; j++) {
-				menuItemAll.forEach(function (elem)) {
+				menuItemAll.forEach(function (elem) {
 					elem.classList.remove(menuItemActiveClass);
 
 				});
