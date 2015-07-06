@@ -30,3 +30,28 @@ html
 
 	&_bottom
 		transform translate(0, 200%)
+
+.organizer
+	position absolute
+	bottom -15px
+	right 24.22%
+	sprite($organizer)
+	cursor pointer
+
+	&:hover
+
+		&:before
+			opacity .55
+
+	&:before
+		position absolute
+		top 37px
+		right 131px
+		content attr(data-text)
+		amazing-b()
+		font-size 15px
+		text-align right
+		color #fff
+		opacity .11
+		transition opacity  .5s ease
+		will-change opacity
