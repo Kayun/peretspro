@@ -1,7 +1,6 @@
-# Template
-**Шаблон проекта для быстрого старта.**
+# Perets.pro
 
 ## Листинг
 
-[`http://localhost:3001/`](http://localhost:3001/).
+[`http://kayun.github.io/peretspro/dist/`](http://kayun.github.io/peretspro/dist/).
 
