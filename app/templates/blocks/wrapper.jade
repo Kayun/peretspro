@@ -1,0 +1,76 @@
+section.wrapper#startScreen
+
+	include ../blocks/header
+
+	a.logo.items.items_left_100.js-items(href=jv0 role="img" data-num=1)
+
+	nav.menu.items.items_left_200.js-items(role="menu" data-num=2)
+		.menu__item.js-menu-item(
+			onclick="app.menuToggle(event.currenTarget)"
+			data-text="Главный экран"
+			role="menuitem"
+			)
+			span.menu__round
+
+		.menu__item.js-menu-item(
+			onclick="app.menuToggle(event.currenTarget)"
+			data-text="Видео о проекте" role="menuitem"
+			)
+			span.menu__round
+
+		.menu__item.js-menu-item(
+			onclick="app.menuToggle(event.currenTarget)"
+			data-text="Обращение организаторов"
+			role="menuitem"
+			)
+			span.menu__round
+
+		.menu__item.js-menu-item(
+			onclick="app.menuToggle(event.currenTarget)"
+			data-text="Заявка"
+			role="menuitem"
+			)
+			span.menu__round
+
+		.menu__item.menu__item_state_active.js-menu-item(
+			onclick="app.menuToggle(event.currenTarget)"
+			data-text="Закрытая зона сайта"
+			role="menuitem"
+			)
+			span.menu__round.menu__round_static
+			span.menu__lock
+
+	.contacts-wrapper
+
+		.contacts.contacts_organizer.items.items_left_100.js-items(data-discription="Организатор" data-num=3)
+			.contacts__logo(role="img")
+			.contacts__address Москва, Толбухина 3
+			a.contacts__phone(href="tel:+7(499)3909931") + 7 (499) 390 99 31
+
+		.contacts.contacts_host.items.items_bottom_200.js-items(data-discription="Принимающая сторона"  data-num=4)
+			.contacts__logo(role="img")
+			.contacts__address 4139 West Vine Street, Suite 112 Lissimmee FL 34741
+			a.contacts__phone(href="tel:+1(407)4797157") + 1 (407) 479 71 57
+
+	#btnGoForm.button.items.items_bottom_200.js-items(
+		role="button"
+		data-text="Отправьте мне все подробности"
+		data-num=5
+	)
+
+		| Отправьте мне все подробности
+		.button__icon
+
+	.organizer#itemOrg.items.items_bottom_50.js-items(data-text="Обращение организаторов" data-num=6)
+
+	include ../blocks/slider
+
+	.copy.items.items_right_100.js-items(role="img"  data-num=8)
+		.copy__icon
+		.copy__text
+
+	.date.items.items_right_100.js-items(data-num=10)
+		.date__duration(role="img")
+		span.date__days 5-15
+		br
+		span.date__month октября

@@ -7,15 +7,15 @@ $button-height = 35px
 	right 14.05%
 	padding-top 60px
 	width $slider-width
-	transition transform .5s ease
-	will-change transform
+	transition transform .5s ease, opacity .3s ease .3s
+	will-change transform, opacity
 	cursor pointer
 
 	&:before
 		position absolute
-		bottom -46px
+		bottom -72px
 		left 0
-		padding-top 26px
+		padding 26px 0
 		width 100%
 		content attr(data-text)
 		hel-neue-l()
@@ -23,7 +23,8 @@ $button-height = 35px
 		color #dca251
 		text-align center
 		opacity 0
-		transition opacity .5s ease .5s
+		visibility hidden
+		transition opacity .5s ease, visibility 0s linear .5s
 		will-change opacity
 
 	&:hover
@@ -31,6 +32,9 @@ $button-height = 35px
 
 		&:before
 			opacity .55
+			visibility visible
+			transition-delay .5s
+			transition-duration .2s, 0s
 
 		.slider__btn
 			top 0
@@ -52,6 +56,19 @@ $button-height = 35px
 			& + .slider__item
 				margin-top 19px !important
 
+	&_pos_top
+		transform translateY(-300px) !important
+
+		&:hover
+			transform translateY(20px) !important
+
+		& .slider__item
+			top auto
+			bottom 0
+
+	&_no_trans
+		transition none !important
+
 	&__item
 		top 0
 		left 0
@@ -60,7 +77,7 @@ $button-height = 35px
 		text-align center
 		visibility hidden
 		opacity 0
-		transition visibility 0s linear .5s, opacity .2s ease .2s, display 0s linear .5s
+		transition visibility 0s linear .5s, opacity .2s ease .2s
 		will-change opacity, visibility
 
 		& + &

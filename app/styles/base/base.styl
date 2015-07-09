@@ -10,7 +10,14 @@ html
 
 .wrapper
 	position relative
+	z-index 2
 	size(100%)
+	transform translateY(0)
+	transition transform .5s ease
+	will-change transform
+
+	&_state_hide
+		transform translateY(-83%)
 
 
 .logo
@@ -25,21 +32,31 @@ html
 	transition opacity .3s ease .3s, transform .6s ease-in-out-back
 	will-change opacity, transform
 
-	&_left
-		transform translate(-150%, 0)
+	&_left_100
+		transform translate(-100%, 0)
 
-	&_right
-		transform translate(150%, 0)
+	&_left_200
+		transform translate(-200%, 0)
 
-	&_bottom
+	&_right_100
+		transform translate(100%, 0)
+
+	&_right_200
+		transform translate(200%, 0)
+
+	&_bottom_200
 		transform translate(0, 200%)
+
+	&_bottom_50
+		transform translate(0, 50%)
 
 .organizer
 	position absolute
-	bottom -15px
+	bottom -5px
 	right 24.22%
 	sprite($organizer)
 	cursor pointer
+	will-change opacity, transform
 
 	&:hover
 
@@ -48,7 +65,7 @@ html
 
 	&:before
 		position absolute
-		top 37px
+		top 44px
 		right 131px
 		content attr(data-text)
 		amazing-b()
@@ -58,6 +75,14 @@ html
 		opacity .11
 		transition opacity  .5s ease
 		will-change opacity
+
+	&_trans
+		transition opacity .25s ease, transform .25s ease
+
+	&_state_hide
+		transform translateY(-40px) !important
+		sprite($organizer_hide)
+
 
 .copy
 	position absolute
@@ -108,3 +133,18 @@ html
 		display inline-block
 		font-size 16px
 		text-align center
+
+.request
+	position relative
+	z-index 1
+	size(100%)
+	transition transform .5s ease
+	will-change transform
+
+	&_state_show
+		transform translateY(-100%)
+
+	&__bg
+		position absolute
+		size(100%)
+		background url('../images/girl.png') 0 0 no-repeat

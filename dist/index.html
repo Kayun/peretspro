@@ -42,30 +42,42 @@
 	<body>
 		<div class="main">
 			<div class="bg"></div>
-			<div class="wrapper">
-				<a href="javascript:void(0);" role="image" class="logo items items_left js-items"></a>
-				<nav class="menu items items_left js-items"><a href="javascript:void(0);" data-text="Главный экран" class="menu__item js-menu-item"><span class="menu__round"></span></a><a href="javascript:void(0);" data-text="Видео о проекте" class="menu__item js-menu-item"><span class="menu__round"></span></a>
-					<a
-					href="javascript:void(0);" data-text="Обращение организаторов" class="menu__item js-menu-item"><span class="menu__round"></span>
-						</a><a href="javascript: app.menuToggle.apply(this)" data-text="Заявка" class="menu__item js-menu-item"><span class="menu__round"></span></a>
-						<a href="javascript: app.menuToggle.apply(this)" data-text="Закрытая зона сайта" class="menu__item menu__item_state_active js-menu-item"><span class="menu__round menu__round_static"></span><span class="menu__lock"></span>
-						</a>
+			<section id="startScreen" class="wrapper">
+				<header role="banner" class="header">
+					<div class="header__item js-header-item">Стажировка в США для
+						<br>профессионалов event-индустрии</div>
+					<div class="header__item js-header-item"></div>
+					<div class="header__item js-header-item"></div>
+					<div class="header__item js-header-item">от ведущих специалистов США</div>
+				</header>
+				<a href="javascript:void(0);" role="img" data-num='1' class="logo items items_left_100 js-items"></a>
+				<nav role="menu" data-num='2' class="menu items items_left_200 js-items">
+					<div onclick="app.menuToggle(event.currenTarget)" data-text="Главный экран" role="menuitem" class="menu__item js-menu-item"><span class="menu__round"></span>
+					</div>
+					<div onclick="app.menuToggle(event.currenTarget)" data-text="Видео о проекте" role="menuitem" class="menu__item js-menu-item"><span class="menu__round"></span>
+					</div>
+					<div onclick="app.menuToggle(event.currenTarget)" data-text="Обращение организаторов" role="menuitem" class="menu__item js-menu-item"><span class="menu__round"></span>
+					</div>
+					<div onclick="app.menuToggle(event.currenTarget)" data-text="Заявка" role="menuitem" class="menu__item js-menu-item"><span class="menu__round"></span>
+					</div>
+					<div onclick="app.menuToggle(event.currenTarget)" data-text="Закрытая зона сайта" role="menuitem" class="menu__item menu__item_state_active js-menu-item"><span class="menu__round menu__round_static"></span><span class="menu__lock"></span>
+					</div>
 				</nav>
 				<div class="contacts-wrapper">
-					<div data-discription="Организатор" class="contacts contacts_organizer items items_left js-items">
-						<div class="contacts__logo"></div>
+					<div data-discription="Организатор" data-num='3' class="contacts contacts_organizer items items_left_100 js-items">
+						<div role="img" class="contacts__logo"></div>
 						<div class="contacts__address">Москва, Толбухина 3</div><a href="tel:+7(499)3909931" class="contacts__phone">+ 7 (499) 390 99 31</a>
 					</div>
-					<div data-discription="Принимающая сторона" class="contacts contacts_host items items_bottom js-items">
-						<div class="contacts__logo"></div>
+					<div data-discription="Принимающая сторона" data-num='4' class="contacts contacts_host items items_bottom_200 js-items">
+						<div role="img" class="contacts__logo"></div>
 						<div class="contacts__address">4139 West Vine Street, Suite 112 Lissimmee FL 34741</div><a href="tel:+1(407)4797157" class="contacts__phone">+ 1 (407) 479 71 57</a>
 					</div>
 				</div>
-				<div class="button items items_bottom js-items">Отправьте мне все подробности
+				<div id="btnGoForm" role="button" data-text="Отправьте мне все подробности" data-num='5' class="button items items_bottom_200 js-items">Отправьте мне все подробности
 					<div class="button__icon"></div>
 				</div>
-				<div data-text="Обращение организаторов" class="organizer items items_bottom js-items"></div>
-				<div data-text="Информационные партнеры" class="slider items items_bottom js-items js-slider">
+				<div id="itemOrg" data-text="Обращение организаторов" data-num='6' class="organizer items items_bottom_50 js-items"></div>
+				<div id="slider" data-text="Информационные партнеры" data-num='7' role="slider" class="slider items items_bottom_50 js-items js-slider">
 					<div class="slider__item">
 						<div class="slider__logo slider__logo_wedding">
 							<a href="javascript:void(0);"></a>
@@ -93,50 +105,53 @@
 					</div>
 					<div class="slider__btn">Стать партнером</div>
 				</div>
-				<div class="copy items items_right js-items">
+				<div role="img" data-num='8' class="copy items items_right_100 js-items">
 					<div class="copy__icon"></div>
 					<div class="copy__text"></div>
 				</div>
-				<div class="music items items_right js-items">
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__strip"><span></span>
-					</div>
-					<div class="music__mute">Выключить звук</div>
-				</div>
-				<div class="date items items_right js-items">
-					<div class="date__duration"></div><span class="date__days">5-15</span>
+				<div data-num='10' class="date items items_right_100 js-items">
+					<div role="img" class="date__duration"></div><span class="date__days">5-15</span>
 					<br><span class="date__month">октября</span>
 				</div>
+			</section>
+			<div data-num='9' class="music items items_right_200 js-items">
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div class="music__strip"><span></span>
+				</div>
+				<div data-vol="Включить звук" class="music__mute">Выключить звук</div>
 			</div>
+			<section id="request" class="request">
+				<div class="request__bg"></div>
+			</section>
 		</div>
 	</body>
 

@@ -15,59 +15,15 @@ block head
 
 block content
 	.bg
-	.wrapper
-		a.logo.items.items_left.js-items(href=jv0 role="image")
 
-		nav.menu.items.items_left.js-items
-			a.menu__item.js-menu-item(href=jv0 data-text="Главный экран")
-				span.menu__round
+	include ../blocks/wrapper
 
-			a.menu__item.js-menu-item(href=jv0 data-text="Видео о проекте")
-				span.menu__round
+	.music.items.items_right_200.js-items(data-num=9)
+		- for (var i = 0; i < 16; i++)
+			.music__strip
+				span
 
-			a.menu__item.js-menu-item(href=jv0 data-text="Обращение организаторов")
-				span.menu__round
+		.music__mute(data-vol="Включить звук") Выключить звук
 
-			a.menu__item.js-menu-item(href="javascript: app.menuToggle.apply(this)" data-text="Заявка")
-				span.menu__round
-
-			a.menu__item.menu__item_state_active.js-menu-item(href="javascript: app.menuToggle.apply(this)" data-text="Закрытая зона сайта")
-				span.menu__round.menu__round_static
-				span.menu__lock
-
-		.contacts-wrapper
-
-			.contacts.contacts_organizer.items.items_left.js-items(data-discription="Организатор")
-				.contacts__logo
-				.contacts__address Москва, Толбухина 3
-				a.contacts__phone(href="tel:+7(499)3909931") + 7 (499) 390 99 31
-
-			.contacts.contacts_host.items.items_bottom.js-items(data-discription="Принимающая сторона")
-				.contacts__logo
-				.contacts__address 4139 West Vine Street, Suite 112 Lissimmee FL 34741
-				a.contacts__phone(href="tel:+1(407)4797157") + 1 (407) 479 71 57
-
-		.button.items.items_bottom.js-items Отправьте мне все подробности
-			.button__icon
-
-		.organizer.items.items_bottom.js-items(data-text="Обращение организаторов")
-
-		include ../blocks/slider
-
-		.copy.items.items_right.js-items
-			.copy__icon
-			.copy__text
-
-		.music.items.items_right.js-items
-			- for (var i = 0; i < 16; i++)
-				.music__strip
-					span
-
-			.music__mute Выключить звук
-
-		.date.items.items_right.js-items
-			.date__duration
-			span.date__days 5-15
-			br
-			span.date__month октября
+	include ../blocks/request
 

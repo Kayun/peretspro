@@ -1,50 +1,60 @@
 var app = {
 	forEachMethod: Array.prototype.forEach, // для перебора коллекций
 
-	loadBgResources: function () {
+	loadResources: function () {
 		console.log('ok');
 	},
 
-	showItems: function () {
+	startAnim: function () {
 		var items = document.querySelectorAll('.js-items'),
-			count = 0;
-		setTimeout(function () {
-			var itemInterval = setInterval(function () {
-				if (count < items.length) {
-					items[count].style.opacity = 1;
-					items[count].style.transform = 'translate(0,0)';
+			headerItems = document.querySelectorAll('.js-header-item');
+
+		setTimeout(interval(items, 100, false), 1000);
+
+		function interval(elem, delay, statEnd) {
+			var count = 0, itemInterval;
+			itemInterval = setInterval(function () {
+				if (count < elem.length) {
+					elem[count].style.opacity = 1;
+					elem[count].style.transform = 'translate(0,0)';
 					count++;
 				} else {
-					clearInterval(itemInterval);
+					if (statEnd) {
+						clearInterval(itemInterval);
+					} else {
+						clearInterval(itemInterval);
+						interval(headerItems, 1000, true);
+					}
 				}
-			}, 100);
-		}, 1000);
+			}, delay);
+		}
 	},
 
 	menuToggle: function () {
 		var menuItemAll = document.querySelectorAll('.js-menu-item'),
 			menuItemActiveClass = 'menu__item_state_active',
-			obj = this;
+			elem = event.currentTarget;
 
-		try {
-			obj.forEachMethod.call(menuItemAll, function (elem) {
-				elem.addEventListener('click', function () {
-					obj.forEachMethod.call(menuItemAll, function (elem) {
-						elem.classList.remove(menuItemActiveClass);
-					});
-					this.classList.add(menuItemActiveClass);
-				});
-			});
-		} catch (err) {}
+		this.forEachMethod.call(menuItemAll, function (elem) {
+			elem.classList.remove(menuItemActiveClass);
+		});
+		elem.classList.add(menuItemActiveClass);
+	},
+
+	buttonFormSend: function () {
+		var startScreen = document.getElementById('startScreen'),
+			btn = event.currentTarget,
+			startScreenHideClass = 'wrapper_state_hide';
+
+		startScreen.classList.toggle(startScreenHideClass);
 	}
 };
 
 
 
 app.init = function () {
-	this.loadBgResources();
-	this.showItems();
-	this.menuToggle();
+	this.loadResources();
+	this.startAnim();
 };
 
 document.addEventListener('DOMContentLoaded', app.init());
