@@ -1,0 +1,142 @@
+.form
+	position absolute
+	top 41%
+	left 47.77%
+
+	&__step
+		color #fff
+
+		&-title
+			position relative
+			pfdin-r()
+			font-size 32px
+			text-transform uppercase
+			letter-spacing 2px
+
+			&:before
+				position absolute
+				left -50px
+				content '—'
+
+		&-text
+			margin 14px 0 30px
+			hel-neue-l()
+			font-size 18px
+			line-height 25px
+			letter-spacing .4px
+
+			&_block
+				display inline-block
+				hel-neue-b()
+				margin-left -9px
+				padding 0 6px 0 11px
+				color #13151e
+				background-color #cecbcb
+				border-radius 2px
+
+		&-input
+			position relative
+			display inline-block
+
+			&_type_name
+
+				span
+					position absolute
+					top 22px
+					left 26px
+					sprite($icon_input_name)
+
+			&_type_mail
+
+				span
+					position absolute
+					top 26px
+					left 26px
+					sprite($icon_input_mail)
+
+			&_type_phone
+
+				span
+					position absolute
+					top 26px
+					left 26px
+					sprite($icon_input_phone)
+
+			/.input
+				margin-left -5px
+				padding 0 20px 0 68px
+				size(250px, 63px)
+				border 2px solid rgba(255, 255, 255, .22)
+				border-radius 2.6%/50%
+				line-height 59px
+				amazing-b()
+				color #fff
+				font-size 16px
+				background-color transparent
+				transition border-color .5s ease
+				will-change border-color, opacity
+
+				&:before
+					size(10px)
+					background-color #f00
+					content ''
+
+				&:hover
+				&:focus
+					border-color rgba(255, 255, 255, 1)
+
+		&-btn
+			display inline-block
+			margin-left 15px
+
+		&-note
+			position relative
+			margin-top 19px
+			padding-left 52px
+
+			/.note
+				hel-neue-l()
+				font-size 9px
+				line-height 11px
+				color rgba(255, 255, 255, .15)
+
+			&:before
+				position absolute
+				top -1px
+				left 22px
+				content ''
+				sprite($icon_lock)
+
+		&-social
+			margin-top 36px
+
+		&-social-note
+			display inline-block
+			margin-left 20px
+			padding-top  10px
+			vertical-align top
+
+		&-follow
+			margin-top 20px
+			font-size 0
+
+			&-title
+				margin-bottom 15px
+				pfdin-xth()
+				font-size 20px
+				color rgba(255, 255, 255, .11)
+				text-transform uppercase
+
+		&-follower
+			margin-top 15px
+			display inline-block
+			size(40px)
+			rounded()
+			overflow hidden
+			border none !important
+
+			img
+				width 100%
+
+			& + &
+				margin-left 10px
