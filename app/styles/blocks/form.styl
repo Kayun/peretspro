@@ -5,6 +5,15 @@
 
 	&__step
 		color #fff
+		opacity 0
+		transition opacity .8s ease
+		will-change opacity
+
+		&_state_active
+			opacity 1
+
+		&_end
+			margin-top -90px
 
 		&-title
 			position relative
@@ -109,6 +118,7 @@
 
 		&-social
 			margin-top 36px
+			font-size 0
 
 		&-social-note
 			display inline-block
@@ -121,14 +131,14 @@
 			font-size 0
 
 			&-title
-				margin-bottom 15px
-				pfdin-xth()
+				margin-bottom 17px
+				pfdin-th()
 				font-size 20px
 				color rgba(255, 255, 255, .11)
 				text-transform uppercase
 
 		&-follower
-			margin-top 15px
+			margin-top 11px
 			display inline-block
 			size(40px)
 			rounded()
@@ -139,4 +149,4 @@
 				width 100%
 
 			& + &
-				margin-left 10px
+				margin-left 4px

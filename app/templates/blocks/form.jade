@@ -1,6 +1,6 @@
-form.form(action=jv0 name="request")
+form#formSend.form(action=jv0 name="request" onsubmit="return false")
 
-	.form__step(style="display:none")
+	.form__step.form__step_state_active.form__step_start
 
 		.form__step-title
 			| Привет, я Анастасия Перец
@@ -19,18 +19,22 @@ form.form(action=jv0 name="request")
 			span
 
 		.form__step-btn
-			button.button-small(type="button" onclick="" disabled) Готово
+			button.button-small(
+				type="button"
+				disabled
+				onclick="app.request.nextStep(event.currentTarget)"
+			) Готово
 
-	.form__step(style="display:none")
+	.form__step.hide
 
 		.form__step-title
-			span.js-input-name Константин
+			span.js-input-name
 			| , очень приятно
 			br
 			| познакомиться!
 
 		.form__step-text
-			| Для того, чтобы мы смогли отравить
+			| Для того, чтобы мы смогли отправить
 			br
 			| вам презентацию проекта, напишите ваш
 			br
@@ -41,18 +45,22 @@ form.form(action=jv0 name="request")
 			span
 
 		.form__step-btn
-			button.button-small(type="button" onclick="" disabled) Готово
+			button.button-small(
+				type="button"
+				disabled
+				onclick="app.request.nextStep(event.currentTarget)"
+			) Готово
 
-	.form__step(style="display:none")
+	.form__step.hide
 
 		.form__step-title
 			| Спасибо, и напоследок
 
 		.form__step-text
-			span.js-input-name Константин
+			span.js-input-name
 			| , оставьте пожалуйста свой
 			br
-			| номер телефона и я перезвонувам, чтобы
+			| номер телефона и я перезвоню вам, чтобы
 			br
 			| рассказать подробности лично и ответить
 			br
@@ -63,7 +71,11 @@ form.form(action=jv0 name="request")
 			span
 
 		.form__step-btn
-			button.button-small(type="submit" onclick="") Готово
+			button.button-small(
+				type="submit"
+				disabled
+				onclick="app.request.formSend()"
+			) Готово
 
 		.form__step-note.note
 			| Ваши персональные данные
@@ -72,7 +84,7 @@ form.form(action=jv0 name="request")
 			br
 			| вам названивать по ночам :)
 
-	.form__step.form__step_end
+	.form__step.form__step_end.hide
 
 		.form__step-title
 			| Готово!
