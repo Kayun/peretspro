@@ -1,5 +1,4 @@
 var app = {
-	forEachMethod: Array.prototype.forEach, // для перебора коллекций
 
 	loadResources: function () {
 		console.log('ok');
@@ -48,7 +47,7 @@ var app = {
 			menuItemActiveClass = 'menu__item_state_active',
 			elem = event.currentTarget;
 
-		this.forEachMethod.call(menuItemAll, function (elem) {
+		forEachMethod.call(menuItemAll, function (elem) {
 			elem.classList.remove(menuItemActiveClass);
 		});
 		elem.classList.add(menuItemActiveClass);
@@ -105,15 +104,104 @@ var app = {
 				itemOrg.style.opacity = 1;
 			}, 250);
 		});
-	}
+	},
+
+	request: {
+
+		nextStep: function () {
+			var currentStep = event.currentTarget.closest('.form__step'),
+				nextStep = currentStep.nextElementSibling,
+				stepClassActive = 'form__step_state_active';
+
+			if (currentStep.classList.contains('form__step_start')) {
+				this.name();
+			}
+
+			currentStep.classList.remove(stepClassActive);
+			setTimeout(function () {
+				currentStep.classList.add('hide');
+				nextStep.classList.remove('hide');
+				setTimeout(function () {
+					nextStep.classList.add(stepClassActive);
+				}, 200);
+			}, 800);
+		},
+
+		name: function () {
+			var inputName = document.getElementById('inputName'),
+				nameSpan = document.querySelectorAll('.js-input-name');
+
+			forEachMethod.call(nameSpan, function (elem) {
+				elem.innerHTML = inputName.value;
+			});
+		},
+
+		formSend: function () {
+			var form = document.getElementById('formSend');
+			this.nextStep();
+			form.submit();
+		},
+
+		validForm: function () {
+			var form = document.getElementById('formSend'),
+				validate = {};
+
+			validate.validName = function () {
+				var input = event.currentTarget,
+					btn = input.closest('.form__step').querySelector('.button-small');
+
+				if (input.value.length < 4) {
+					input.classList.add('error');
+					btn.disabled = true;
+				} else {
+					input.classList.remove('error');
+					btn.disabled = false;
+				}
+			};
+
+			validate.validMail = function () {
+				var input = event.currentTarget,
+					btn = input.closest('.form__step').querySelector('.button-small'),
+					reg = /^(\w|[.])+@[a-z]+[.][a-z]{2,}$/i;
+
+				if (!reg.test(input.value)) {
+					input.classList.add('error');
+					btn.disabled = true;
+				} else {
+					input.classList.remove('error');
+					btn.disabled = false;
+				}
+			};
+
+			validate.validPhone = function () {
+				var input = event.currentTarget,
+					btn = input.closest('.form__step').querySelector('.button-small'),
+					reg = /^((\+[7])|[8])(([-]?|\s)|[(]?)[0-9]{3,4}([)]?|([-]?|\s))[0-9]{3}[-]?[0-9]{2}[-]?[0-9]{2}$/i;
+
+				if (!reg.test(input.value)) {
+					input.classList.add('error');
+					btn.disabled = true;
+				} else {
+					input.classList.remove('error');
+					btn.disabled = false;
+				}
+			};
+
+			form.elements.name.oninput = validate.validName;
+			form.elements.mail.oninput = validate.validMail;
+			form.elements.phone.oninput = validate.validPhone;
+		}
+	},
+
 };
-
-
 
 app.init = function () {
 	this.loadResources();
 	this.startAnim();
 	this.buttonFormSend();
+	this.request.validForm();
 };
+
+var forEachMethod = Array.prototype.forEach; // для перебора коллекций
 
 document.addEventListener('DOMContentLoaded', app.init());
