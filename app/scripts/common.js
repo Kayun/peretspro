@@ -83,6 +83,8 @@ var app = {
 
 		btn.addEventListener('click', function () {
 
+			isClass(btn, btnClassHide) ? parallax.desable() : parallax.enable()
+
 			startScreen.classList.toggle(startScreenHideClass);
 			blockRequest.classList.toggle(blockRequestClassShow);
 
@@ -137,7 +139,10 @@ var app = {
 		},
 
 		formSend: function () {
-			var form = document.getElementById('formSend');
+			var form = document.getElementById('formSend'),
+				petals = document.getElementById('petals');
+
+			petals.classList.add('petals_state_show');
 			this.nextStep();
 			form.submit();
 		},
@@ -193,38 +198,95 @@ var app = {
 		}
 	},
 
-	parallax: function () {
-		var petals = document.getElementById('petals'), parallax;
+	parallax: function Parallax(cont, param) {
+		var obj = this
+		this.cont = cont;
+		this.active = (param.active.toString() !== '') ? param.active : true;
 
-		parallax = new Parallax(petals, {
-			relativeInput: true,
-			clipRelativeInput: false,
-			calibrateX: false,
-			calibrateY: true,
-			invertX: false,
-			invertY: true,
-			limitX: false,
-			limitY: 10,
-			scalarX: 2,
-			scalarY: 8,
-			frictionX: 0.2,
-			frictionY: 0.8,
-			originX: 0.0,
-			originY: 1.0
+		this.mousePos = function () {
+			return {top: event.clientY, left: event.clientX}
+		};
+
+		this.pos = function (elem) {
+			var box = elem.getBoundingClientRect(),
+				top, left;
+
+			top = box.top + window.pageYOffset + elem.offsetWidth / 2;
+			left = box.left + window.pageXOffset + elem.offsetHeight / 2;
+			return {top: top, left: left}
+		};
+
+		this.enable = function () {
+			this.active = true;
+			Array.prototype.forEach.call(cont.children, function (elem) {
+				obj.init(elem);
+			});
+		}
+
+		this.desable = function () {
+			this.active = false;
+			Array.prototype.forEach.call(cont.children, function (elem) {
+				obj.init(elem);
+			});
+		}
+
+		this.init = function (elem) {
+
+			window.addEventListener('mousemove', function () {
+
+				if (!obj.active) return false
+
+				var deffY = obj.mousePos().top - obj.pos(elem).top;
+				var deffX = obj.mousePos().left - obj.pos(elem).left;
+				var windowHeight = document.documentElement.clientHeight,
+					windowWidth = document.documentElement.clientWidth,
+					y, x;
+
+				var kY = windowHeight - obj.pos(elem).top;
+				var kX = windowWidth - obj.pos(elem).left;
+				var depth = elem.dataset.depth;
+
+				if (deffY < 0) {
+					y = -param.deviation * depth * (obj.pos(elem).top - obj.mousePos().top) / obj.pos(elem).top;
+				} else if (deffY > 0) {
+					y = param.deviation * depth * (obj.mousePos().top - obj.pos(elem).top) / kY;
+				} else {
+					y = 0;
+				}
+
+				if (deffX < 0) {
+					x = -param.deviation * depth * (obj.pos(elem).left - obj.mousePos().left) / obj.pos(elem).left;
+				} else if (deffX > 0) {
+					x = param.deviation * depth * (obj.mousePos().left - obj.pos(elem).left) / kX;
+				} else {
+					x = 0;
+				}
+
+				elem.style.transform = 'translate(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px)';
+			});
+		};
+
+		Array.prototype.forEach.call(cont.children, function (elem) {
+			obj.init(elem);
 		});
-		console.log(petals)
 	}
 
 };
 
+var forEachMethod = Array.prototype.forEach, // для перебора коллекций
+	parallax;
+
 app.init = function () {
+	var petals = document.getElementById('petals');
+
+	parallax = new this.parallax(petals, {
+		deviation: 30,
+		active: false
+	});
 	this.loadResources();
 	this.startAnim();
 	this.buttonFormSend();
 	this.request.validForm();
-	this.parallax()
 };
-
-var forEachMethod = Array.prototype.forEach; // для перебора коллекций
 
 document.addEventListener('DOMContentLoaded', app.init());

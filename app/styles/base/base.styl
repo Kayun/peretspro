@@ -161,9 +161,18 @@ html
 	top 0
 	left 0
 	size(100%)
+	opacity 0
+	transition opacity .5s ease
+	will-change opacity
+
+	&_state_show
+		opacity 1
 
 .petal
-	position: absolute;
+	position absolute
+	z-index 2
+	transform-origin 50% 50%
+	will-change transform
 
 	&:nth-child(1)
 		top 12.33%
